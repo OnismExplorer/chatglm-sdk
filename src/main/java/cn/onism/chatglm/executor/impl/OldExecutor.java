@@ -83,12 +83,12 @@ public class OldExecutor implements Executor{
 
             @Override
             public void onClosed(@NotNull EventSource eventSource) {
-                future.completeExceptionally(new RuntimeException("Request closed before completion"));
+                future.completeExceptionally(new CustomException(CodeEnum.REQUEST_CLOESD));
             }
 
             @Override
             public void onFailure(@NotNull EventSource eventSource, @Nullable Throwable t, @Nullable Response response) {
-                future.completeExceptionally(new RuntimeException("Request closed before completion"));
+                future.completeExceptionally(new CustomException(CodeEnum.REQUEST_CLOESD));
             }
         });
 
