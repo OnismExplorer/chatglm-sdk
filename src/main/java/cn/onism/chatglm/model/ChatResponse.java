@@ -21,7 +21,7 @@ public class ChatResponse {
     private String data;
     private String meta;
 
-    // 24年1月发布的 GLM_3_5_TURBO、GLM_4 模型时新增
+    // 24年1月发布的 GLM_3_TURBO、GLM_4 模型时新增
     private String id;
     private Long created;
     private String model;
@@ -72,7 +72,8 @@ public class ChatResponse {
         /**
          * 任务状态
          */
-        private String task_status;
+        @JsonProperty("task_status")
+        private String taskStatus;
         /**
          * token 使用量
          */
@@ -80,11 +81,13 @@ public class ChatResponse {
         /**
          * 任务 ID
          */
-        private String task_id;
+        @JsonProperty("task_id")
+        private String taskId;
         /**
          * 请求 ID
          */
-        private String request_id;
+        @JsonProperty("request_id")
+        private String requestId;
     }
 
     @Data
@@ -92,14 +95,17 @@ public class ChatResponse {
         /**
          * 完成令牌
          */
-        private int completion_tokens;
+        @JsonProperty("completion_tokens")
+        private int completionTokens;
         /**
          * 提示令牌
          */
-        private int prompt_tokens;
+        @JsonProperty("prompt_tokens")
+        private int promptTokens;
         /**
          * token 总数
          */
-        private int total_tokens;
+        @JsonProperty("total_tokens")
+        private int totalTokens;
     }
 }

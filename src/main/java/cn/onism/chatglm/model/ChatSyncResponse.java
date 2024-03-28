@@ -1,5 +1,6 @@
 package cn.onism.chatglm.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import java.util.List;
@@ -30,7 +31,8 @@ public class ChatSyncResponse {
     private ChatGLMData data;
 
     // 24年1月发布模型新增字段 GLM3、GLM4
-    private String task_status;
+    @JsonProperty("task_status")
+    private String taskStatus;
     /**
      * 选择
      */
@@ -52,7 +54,8 @@ public class ChatSyncResponse {
         /**
          * 任务状态
          */
-        private String task_status;
+        @JsonProperty("task_status")
+        private String taskStatus;
         /**
          * token 用量
          */
@@ -60,11 +63,13 @@ public class ChatSyncResponse {
         /**
          * 任务 ID
          */
-        private String task_id;
+        @JsonProperty("task_id")
+        private String taskId;
         /**
          * 请求 ID
          */
-        private String request_id;
+        @JsonProperty("request_id")
+        private String requestId;
     }
 
     @Data
@@ -72,15 +77,18 @@ public class ChatSyncResponse {
         /**
          * 完成 token 数
          */
-        private int completion_tokens;
+        @JsonProperty("completion_tokens")
+        private int completionTokens;
         /**
          * 提示 token 数
          */
-        private int prompt_tokens;
+        @JsonProperty("prompt_tokens")
+        private int promptTokens;
         /**
          * token 总数
          */
-        private int total_tokens;
+        @JsonProperty("total_tokens")
+        private int totalTokens;
     }
 
     @Data
@@ -98,7 +106,8 @@ public class ChatSyncResponse {
         /**
          * 完成原因
          */
-        private String finish_reason;
+        @JsonProperty("finish_reason")
+        private String finishReason;
         /**
          * 指数
          */

@@ -1,7 +1,6 @@
 package cn.onism.chatglm.model;
 
 import cn.hutool.json.JSONUtil;
-import cn.hutool.json.ObjectMapper;
 import cn.onism.chatglm.constant.Model;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
