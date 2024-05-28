@@ -13,6 +13,7 @@ import cn.onism.chatglm.session.Configuration;
 import cn.onism.chatglm.session.defaults.DefaultChatGLMSessionFactory;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import lombok.extern.slf4j.Slf4j;
 import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import okhttp3.sse.EventSource;
