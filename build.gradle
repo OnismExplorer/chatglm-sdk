@@ -1,0 +1,73 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+group 'cn.onism.chatglm'
+version '1.0'
+
+// 设置仓库
+repositories {
+    mavenLocal() // 本地仓库
+    maven {url 'https://maven.aliyun.com/repository/central'} // 阿里云镜像仓库
+    maven{url "https://mirrors.cloud.tencent.com/nexus/repository/maven-public/"} // 腾讯云镜像仓库
+    mavenCentral() // 中央仓库
+}
+
+ext {
+    hutoolVersion = '5.8.26'
+    // SSE依赖
+    okhttpVersion = '4.12.0'
+    slf4jVersion = '2.0.12'
+    // RESTful的http网络请求框架的封装
+    retrofit2Version = '2.9.0'
+    lombokVersion = '1.18.30'
+}
+
+dependencies {
+    implementation "org.slf4j:slf4j-api:${slf4jVersion}"
+    implementation "org.slf4j:slf4j-simple:${slf4jVersion}"
+    implementation "cn.hutool:hutool-all:${hutoolVersion}"
+    implementation "com.squareup.okhttp3:okhttp-sse:${okhttpVersion}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${okhttpVersion}"
+    implementation "com.squareup.retrofit2:retrofit:${retrofit2Version}"
+    implementation "com.squareup.retrofit2:converter-jackson:${retrofit2Version}"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:${retrofit2Version}"
+    compileOnly "org.jetbrains:annotations:RELEASE"
+    // OpenAI开源的一个快速分词工具
+    implementation "com.knuddels:jtokkit:1.0.0"
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    // 常见类型工具类
+    implementation "org.apache.commons:commons-lang3:3.14.0"
+    implementation "com.auth0:java-jwt:4.4.0"
+    // 封装平时用的方法
+    implementation "com.google.guava:guava:33.1.0-jre"
+    // 提供对http服务器的访问功能
+    implementation "org.apache.httpcomponents.client5:httpclient5:5.3.1"
+    // 非web项目实现文件下载
+    implementation "org.apache.httpcomponents:httpmime:4.5.14"
+    // Junit 测试
+    testImplementation "junit:junit:4.13.2"
+    implementation "com.fasterxml.jackson.core:jackson-annotations:2.17.0"
+}
+
+compileJava.options.encoding = 'UTF-8'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        // 打包到本地仓库
+        mavenLocal()
+    }
+}
